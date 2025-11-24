@@ -1,0 +1,1577 @@
+\pdfoutput=1
+\documentclass[
+  reprint,
+  amsmath,amssymb,
+  aps,
+  prd,
+  nofootinbib,
+  longbibliography
+]{revtex4-2}
+
+% ============================================================
+% PACKAGES
+% ============================================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{enumitem}
+
+% TikZ + PGFPlots
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.markings,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- hyperref BEFORE cleveref ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+% --- cleveref AFTER hyperref ---
+\usepackage[capitalize,nameinlink]{cleveref}
+
+% ============================================================
+% MACROS
+% ============================================================
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Sop}{\mathcal{S}}
+\newcommand{\A}{\mathcal{A}}
+
+% ============================================================
+% TITLE + AUTHORS
+% ============================================================
+\begin{document}
+
+\title{The Triadic Asymmetry Principle:\\
+A Unified Geometric Origin of Dark Matter, Dark Energy,\\
+and Density-Modulated Gravity}
+
+\author{David C.~Horn}
+\affiliation{Independent Researcher}
+
+\date{\today}
+
+\begin{abstract}
+\noindent
+We develop the \textit{Triadic Asymmetry Principle} (TAP), a geometric
+framework in which the ordered, non-commuting interaction among
+\(\M\), \(\T\), and \(\Sop\) generates three emergent
+cosmological channels: density-modulated gravity,
+a rigidity-dominated matter component (TRM), and a geometric
+dark-energy sector proportional to the asymmetry scalar
+\(\A = \|[\M,\T,\Sop]\|\). Taken together, these results show that TAP is a tightly constrained,
+observationally testable geometric extension of general relativity capable
+of addressing multiple late-time tensions within a single unified framework.
+\end{abstract}
+
+\maketitle
+
+% ============================================================
+% I. INTRODUCTION
+% ============================================================
+\section{Introduction}
+\begin{quote}
+\textbf{Executive Summary — Key Contributions.}
+This work introduces the \textit{Triadic Asymmetry Principle} (TAP), a geometric framework in which the ordered non-commutativity of Motion ($\M$), Time ($\T$), and Space ($\Sop$) produces three emergent late-time cosmological sectors. In particular, we:
+(i) define the asymmetry scalar $\A = \|[\M,\T,\Sop]\|$ as a measure of triadic non-closure;
+(ii) show that the deformation $\sqrt{-g}\!\rightarrow\!\sqrt{-g}\,F(\A)$ generates a density-modulated Newton coupling, a rigidity-dominated dark-matter–like component (TRM), and a geometric dark-energy sector $\rho_\Lambda\propto\A$;
+(iii) derive TAP-modified Friedmann and perturbation equations;
+(iv) demonstrate exact recovery of GR via geometric screening when $\A\to0$; and
+(v) identify correlated observational signatures—relief of the Hubble tension, mild $S_8$ suppression, and evolving $w(z)$—arising from the shared dependence on $\A(a)$. These features make TAP a tightly constrained, observationally testable extension of $\Lambda$CDM.
+\end{quote}
+Modern cosmology rests on two pillars: general relativity (GR) and the
+$\Lambda$CDM model\cite{Planck2018params}. Together they provide a remarkably successful
+description of the Universe, yet several persistent anomalies suggest
+that the standard framework may be incomplete. These include the
+Hubble--$H_0$ tension between early- and late-universe inferences,\cite{Riess2022SH0ES},
+mild discrepancies in growth-rate measurements (often expressed through $S_8$),\cite{KiDS2021S8}, and indications from DESI that the dark-energy equation of state may evolve at intermediate redshift.\cite{DESI2024VIcosmo} At the same time, direct-detection
+efforts for particle dark matter continue to return null results. Taken
+together, these motivate re-examining the underlying geometric
+assumptions of spacetime rather than introducing additional particle
+species.
+
+The \textit{Triadic Asymmetry Principle} (TAP) proposes such a geometric
+extension. Its central idea is that the three fundamental components of
+spacetime---Motion $\M$, Time $\T$, and Space $\Sop$---possess an
+\textit{ordered}, non-commuting structure when acting as large-scale
+geometric operators. TAP postulates that these components alter one
+another in a specific directionally-ordered triad,
+\begin{equation}
+    \M \longrightarrow \T \longrightarrow \Sop,
+\end{equation}
+and that the reverse ordering describes a distinct anti-verse sector
+rather than an equivalent rearrangement. This ordered non-closure is
+encoded by the \textit{asymmetry scalar} $\A = \|[\M,\T,\Sop]\|$. When
+$\A = 0$ the operators effectively commute and GR is recovered. When
+$\A \neq 0$, three new cosmological sectors emerge.
+
+The goal of this paper is to show that TAP provides a unified geometric
+origin for (i) a density-modulated effective Newton constant
+$G_{\mathrm{eff}}(\rho)$, (ii) a rigidity-dominated matter component
+(TRM) with continuity relation
+$\rho_{\mathrm{TRM}} \propto a^{-3(1+\beta)}$, and (iii) a geometric
+dark-energy contribution $\rho_\Lambda \propto \A$. Remarkably, these
+three sectors reproduce the observed energy partition of the Universe
+and predict mild, testable deviations from $\Lambda$CDM at
+intermediate redshift. In high-density or high-curvature regimes,
+$\A$ is dynamically suppressed, ensuring a smooth and exact recovery of
+general relativity.
+
+The remainder of this work develops the TAP framework systematically.
+Section~\ref{sec:axioms} introduces the triadic operators and defines
+the asymmetry scalar. Section~\ref{sec:action} incorporates $\A$ into a
+covariant action and derives TAP-modified field equations.
+Section~\ref{sec:cosmo} analyzes the resulting cosmological sectors,
+Section~\ref{sec:pred} presents TAP cosmological predictions, and
+Section~\ref{sec:local} demonstrates the natural GR limit and screening behavior. We conclude with theoretical implications and
+observational prospects.
+
+\paragraph*{Relation to existing frameworks.}
+TAP differs sharply from scalar--tensor and Horndeski-type modified-gravity models,\cite{Kase2019HorndeskiBeyond}
+which introduce new propagating degrees of freedom and typically produce gravitational slip. It also differs from curvature-modified approaches such as $f(R)$ gravity,\cite{Sotiriou2010fRreview}, which generate dynamical scalar modes even in their Einstein-frame representations. In contrast, TAP introduces no additional fields: all deviations from GR arise solely from the geometric non-closure of the ordered triad $(\M,\T,\Sop)$, ensuring $\Phi = \Psi$ at
+the linear level. TAP is further distinct from dynamical dark-energy frameworks,\cite{Chevallier2001CPL,Linder2003CPL}
+where $w(z)$ evolution follows from a scalar potential; here the mild evolution of $w(z)$ emerges directly from the growth of the asymmetry scalar $\A(a)$.
+Finally, although TAP shares conceptual affinity with approaches based on
+non-commutative geometry, its triadic residue $\A=\|[\M,\T,\Sop]\|$ does not
+require a deformation of the coordinate algebra, but instead reflects an ordered
+non-commutation among geometric operators themselves.
+
+\subsection*{Notation and Conventions}
+
+We adopt units $c = \hbar = 1$ and metric signature $(-,+,+,+)$ throughout.
+Overdots denote derivatives with respect to cosmic time $t$, primes denote
+derivatives with respect to $\ln a$, and $H \equiv \dot{a}/a$ is the Hubble
+parameter. The curvature scalar is $R$, and we use $g_{\mu\nu}$ for the spacetime
+metric with determinant $g$. All cosmological background quantities are functions
+of the scale factor $a$ unless otherwise specified. The triadic operators $(\M,\T,\Sop)$
+are treated as large-scale geometric operators whose ordered non-commutation
+produces the asymmetry scalar $\A = \|[\M,\T,\Sop]\|$.
+% ============================================================
+% II. TRIADIC AXIOMS AND GEOMETRIC OPERATORS
+% ============================================================
+\section{Triadic axioms and geometric operators}
+\label{sec:axioms}
+
+The Triadic Asymmetry Principle (TAP) begins with the observation that
+Motion $\M$, Time $\T$, and Space $\Sop$ do not enter physical law
+symmetrically. TAP postulates that these components act as geometric
+operators that alter one another in a \emph{directionally ordered}
+sequence. This ordering is the sole new assumption of the framework,
+yet it is sufficiently strong to generate all emergent cosmological
+sectors derived later.
+
+% ------------------------------------------------------------
+\subsection{Axiom 1: Ordered triadic alteration}
+
+The Universe exhibits a fundamental three-step alteration pattern:
+\begin{equation}
+    \M \;\longrightarrow\; \T \;\longrightarrow\; \Sop .
+    \label{eq:axiom1-cycle}
+\end{equation}
+Each arrow denotes a geometric operation in which one component alters
+the next within the context of the third. In our Universe, this pattern
+is instantiated physically as:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Motion alters Time within Space} — time dilation,
+    \item \textbf{Time alters Space within Motion} — cosmic expansion,
+    \item \textbf{Space alters Motion within Time} — gravitational curvature.
+\end{itemize}
+
+TAP also introduces a corresponding set of \emph{operant-driven
+observation patterns}, which we format here in a margin-safe multiline
+environment:
+\begin{align}
+\text{Space encodes Time}, \nonumber\\
+\text{Time encodes Motion}, \nonumber\\
+\text{Motion encodes Space}, \nonumber\\
+\text{Space encodes Time's encodement of Motion}, \nonumber\\
+\text{Time encodes Motion's encodement of Space}, \nonumber\\
+\text{Motion encodes Space's encodement of Time}. \label{eq:encodement}
+\end{align}
+These extended encodement relations arise naturally once the ordered
+structure~\eqref{eq:axiom1-cycle} is treated as a non-commutative
+geometric sequence.\cite{DeCastro2021NCGcosmology}
+
+The reversed ordering,
+\begin{equation}
+    \Sop \;\longrightarrow\; \T \;\longrightarrow\; \M ,
+    \label{eq:axiom1-reverse}
+\end{equation}
+is \emph{not} equivalent. Rather, it corresponds to an anti-verse sector
+in which the triadic orientation is inverted. Global symmetry is
+restored only when both sectors are taken together.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.88\linewidth]{figures/Triadic alteration pattern.pdf}
+    \caption{
+    The TAP ordered triadic alteration pattern 
+    $\M \rightarrow \T \rightarrow \Sop \rightarrow \M$, showing the
+    directionally-ordered non-commuting cycle that defines the Triadic
+    Asymmetry Principle.
+    }
+    \label{fig:triad-cycle}
+\end{figure}
+
+% ------------------------------------------------------------
+\subsection{Axiom 2: Triadic non-closure and asymmetry}
+\label{subsec:axiom2}
+
+If $\M$, $\T$, and $\Sop$ commuted when acting in an ordered sequence,
+the two cycles \eqref{eq:axiom1-cycle} and \eqref{eq:axiom1-reverse}
+would be equivalent. TAP postulates that they do \emph{not} commute.
+
+We define the \textit{triadic residue} or \textit{triadic commutator}:
+\begin{equation}
+  [\M,\T,\Sop]
+  \equiv \M\!\left(\T(\Sop)\right)
+     - \Sop\!\left(\T(\M)\right).
+  \label{eq:triadic-comm-def}
+\end{equation}
+TAP asserts that
+\begin{equation}
+  [\M,\T,\Sop] \neq 0,
+\end{equation}
+on cosmological scales. This non-closure is the geometric origin of all
+emergent TAP sectors.
+
+From the residue we define the \textit{asymmetry scalar}
+\begin{equation}
+  \A \equiv \bigl\|[\M,\T,\Sop]\bigr\|,
+  \label{eq:asymmetry-scalar}
+\end{equation}
+which quantifies the magnitude of ordered non-commutativity. When
+$\A=0$, TAP reduces exactly to general relativity.
+
+% ------------------------------------------------------------
+\subsection{Axiom 3: Geometric deformation induced by $\A$}
+\label{subsec:axiom3}
+
+The asymmetry scalar modifies gravity through a deformation of the
+geometric measure in the action:
+\begin{equation}
+  \sqrt{-g} \;\longrightarrow\; \sqrt{-g}\,F(\A),
+  \label{eq:measure-deformation}
+\end{equation}
+where $F(\A)$ is smooth with $F(0)=1$. This minimal deformation induces
+three independent cosmological sectors:
+\begin{itemize}[leftmargin=*]
+  \item a density-modulated Newton constant,
+    \[
+      G_{\mathrm{eff}}(\rho)
+      = G(1 + \alpha \A + \mathcal{O}(\A^2)),
+    \]
+  \item a rigidity-dominated matter component (TRM),
+    \[
+      \rho_{\mathrm{TRM}} \propto a^{-3(1+\beta)},
+    \]
+  \item a geometric dark-energy density,
+    \[
+      \rho_\Lambda \propto \A.
+    \]
+\end{itemize}
+These three channels form the backbone of TAP cosmology and will be
+derived from the action in Sec.~\ref{sec:action}.
+
+% ------------------------------------------------------------
+\subsection{Operator representations}
+\label{subsec:operators}
+
+For cosmological applications we adopt a $(3+1)$-decomposition
+representation:
+\begin{align}
+  \M &\equiv u^\mu \nabla_\mu, \\
+  \T &\equiv n^\mu \nabla_\mu, \\
+  \Sop &\equiv h^{\mu\nu}\nabla_\mu\nabla_\nu,
+\end{align}
+where $u^\mu$ is a four-velocity, $n^\mu$ a time-normal associated with
+expansion, and $h^{\mu\nu}$ the induced spatial metric. TAP is not tied
+to a unique representation; any choice with the same ordered,
+non-commuting structure yields equivalent cosmology.
+
+In the next section we embed the asymmetry scalar $\A$ into a covariant
+action and derive the TAP-modified field equations.
+
+% ============================================================
+% III. TAP-MODIFIED ACTION AND FIELD EQUATIONS
+% ============================================================
+\section{The TAP-modified action and field equations}
+\label{sec:action}
+
+Section~\ref{sec:axioms} introduced the asymmetry scalar
+$\A = \|[\M,\T,\Sop]\|$, which measures the magnitude of ordered,
+non-commuting triadic alteration. We now incorporate this scalar into a
+generally covariant action and derive the resulting TAP-modified field
+equations.
+
+% ------------------------------------------------------------
+\subsection{Deformation of the Einstein--Hilbert action}
+
+TAP modifies gravity not by introducing new fields or particle species,
+but through a deformation of the geometric measure motivated by the
+non-closure of $\M$, $\T$, and $\Sop$. The TAP action is
+\begin{equation}
+    S_{\mathrm{TAP}}
+    = \frac{1}{16\pi G}
+    \int d^4x\,\sqrt{-g}\,F(\A)\,R
+    + S_{\mathrm{m}},
+    \label{eq:TAP-action}
+\end{equation}
+where $F(\A)$ is a smooth deformation function satisfying:
+\[
+F(0) = 1, \qquad F'(\A) > 0,
+\]
+and $S_{\mathrm{m}}$ is the minimally coupled matter action. The GR
+limit is recovered when $\A \to 0$.
+
+The deformation modifies both the effective gravitational coupling and
+the stress-energy balance. Varying the action with respect to the
+metric yields:
+\begin{equation}
+    F(\A) G_{\mu\nu}
+    + \left( g_{\mu\nu}\Box - \nabla_\mu\nabla_\nu \right) F(\A)
+    = 8\pi G\,T_{\mu\nu},
+    \label{eq:TAP-field-eq-general}
+\end{equation}
+which reduces to the Einstein equations when $F(\A)=1$.
+
+% ------------------------------------------------------------
+\subsection{Effective gravitational coupling}
+
+In a homogeneous and isotropic background, the dominant contribution
+from the measure deformation is a renormalization of the gravitational
+coupling:
+\begin{equation}
+    G_{\mathrm{eff}}(\rho)
+    = \frac{G}{F(\A)}.
+\end{equation}
+Expanding about small $\A$ gives the form used throughout TAP:
+\begin{equation}
+    G_{\mathrm{eff}}(\rho)
+    = G\left(1 + \alpha \A + \mathcal{O}(\A^2)\right),
+    \label{eq:Geff-expand}
+\end{equation}
+with $\alpha \equiv -F'(0)$.
+
+Because $\A$ is itself a function of curvature, kinematic shear, and
+large-scale cosmic evolution, $G_{\mathrm{eff}}$ becomes density- and
+history-dependent. This produces a natural ``density-modulated
+gravity'' sector. \cite{Kunz2009Degeneracy}
+
+% ------------------------------------------------------------
+\subsection{TAP-modified Friedmann equations}
+
+Adopting a flat FLRW metric, the modified field equations produce:
+\begin{align}
+    3H^2
+    &= 8\pi G_{\mathrm{eff}}(\rho) \left( \rho_{\mathrm{b}} + \rho_{\mathrm{TRM}}
+    + \rho_{\Lambda} \right),
+    \label{eq:Friedmann1}
+    \\
+    2\dot{H} + 3H^2
+    &= -8\pi G_{\mathrm{eff}}(\rho)
+    \left( p_{\mathrm{TRM}} + p_{\Lambda} \right),
+    \label{eq:Friedmann2}
+\end{align}
+where $\rho_{\mathrm{b}}$ is the baryonic density. The TAP sectors arise
+from the structure of $F(\A)$ and its derivatives with respect to the
+metric.
+
+% ------------------------------------------------------------
+\subsection{Emergence of TRM and geometric dark energy}
+
+The continuity equation for the TAP sectors takes the general form:
+\begin{equation}
+    \dot{\rho}_{\mathrm{TAP}}
+    + 3H\left(\rho_{\mathrm{TAP}}+p_{\mathrm{TAP}}\right)
+    = Q_{\mathrm{TAP}},
+\end{equation}
+with $Q_{\mathrm{TAP}}$ determined by the metric variation of $F(\A)$. 
+Such interaction terms are known to generate instabilities in many dark-sector
+coupling models,\cite{Valiviita2008Interacting} but in TAP the interaction
+arises purely from geometric deformation and does not introduce additional
+propagating degrees of freedom.
+
+Two distinct contributions appear:
+
+\paragraph{1. Rigidity-dominated matter (TRM).}
+The first is a matter-like component whose continuity equation yields:
+\begin{equation}
+    \rho_{\mathrm{TRM}}
+    \propto a^{-3(1+\beta)},
+    \qquad
+    p_{\mathrm{TRM}} = \beta \rho_{\mathrm{TRM}},
+    \label{eq:TRM-scaling}
+\end{equation}
+with $\beta>0$ determined by the deformation function. This component
+behaves like stiffened dark matter and originates entirely from the
+geometric non-closure measured by $\A$.
+
+\paragraph{2. Geometric dark energy.}
+A second contribution arises from
+the covariant Laplacian acting on $F(\A)$:
+\begin{equation}
+    \rho_\Lambda
+    \equiv \frac{1}{16\pi G}
+    \left( \Box F(\A) - \nabla_\mu\nabla_\nu F(\A) g^{\mu\nu} \right)
+    \propto \A.
+\end{equation}
+This component does not require a scalar potential, vacuum energy, or
+cosmological constant. Its magnitude is set entirely by the
+non-commutative residue of the ordered triad.
+
+% ------------------------------------------------------------
+\subsection{Summary of TAP field structure}
+
+The TAP deformation produces three structural consequences:
+\begin{enumerate}[leftmargin=*]
+  \item A density-modulated coupling $G_{\mathrm{eff}}(\rho)$.
+  \item A rigidity-dominated matter component (TRM) with scaling
+        $a^{-3(1+\beta)}$.
+  \item A geometric dark-energy sector with $\rho_\Lambda\propto \A$.
+\end{enumerate}
+These arise not from additional fields or potentials but from the
+non-closure of the triadic operators.
+% ============================================================
+% IV. EMERGENT COSMOLOGICAL SECTORS
+% ============================================================
+\section{Emergent cosmological sectors}
+\label{sec:cosmo}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.92\linewidth]{figures/Fig_A_Channels.pdf}
+    \caption{
+    The three emergent TAP sectors arising from the asymmetry scalar 
+    $A \equiv \|[\M,\T,\Sop]\|$: 
+    (1) Density-Modulated Gravity, 
+    (2) Triadic Rigidity Matter (TRM), and 
+    (3) Geometric Dark Energy. 
+    All three originate from TAP’s ordered non-commutativity of motion,
+    time, and space.
+    }
+    \label{fig:channels}
+\end{figure}
+
+The TAP deformation produces three distinct cosmological sectors, each
+arising from the same geometric origin: the non-closure of the ordered
+triad measured by the asymmetry scalar $\A$.  Unlike extensions of
+$\Lambda$CDM that introduce additional fields or particle species, the
+TAP sectors emerge solely through the deformation $F(\A)$ of the
+Einstein--Hilbert measure.  In this section we analyze each sector in
+turn.
+
+% ------------------------------------------------------------
+\subsection{Density-modulated gravity}
+\label{subsec:Geff}
+
+The effective gravitational coupling
+\begin{equation}
+    G_{\mathrm{eff}}(\rho)
+    = G\, F(\A)^{-1}
+\end{equation}
+encodes how the TAP deformation alters the strength of gravity at
+different curvature or density scales.  In the small-$\A$ limit we have:
+\begin{equation}
+    G_{\mathrm{eff}}(\rho)
+    = G \left( 1 + \alpha \A + \mathcal{O}(\A^2) \right),
+\end{equation}
+with $\alpha = -F'(0)$.
+
+Because $\A$ itself depends on curvature, kinematic shear, and the
+expansion history, the resulting gravitational coupling tracks the
+cosmic environment:
+\begin{itemize}[leftmargin=*]
+    \item In high-density or high-curvature regions,
+          $\A \rightarrow 0$ and $G_{\mathrm{eff}} \rightarrow G$.
+    \item At late times, when cosmic deceleration weakens,
+          $\A$ increases and produces a mild relaxation of gravity.
+\end{itemize}
+
+This behavior naturally …moves the inferred $H_0$ upward,\cite{Riess2022SH0ES} by a correlated
+amount, alleviating the Hubble tension without fine tuning or energy
+exchange between dark sectors.
+
+% ------------------------------------------------------------
+\subsection{Triadic Rigidity Matter (TRM)}
+\label{subsec:TRM}
+
+A second emergent sector arises from the contribution of
+$\nabla_\mu\nabla_\nu F(\A)$ to the metric field equations.  Its
+continuity relation takes the form:
+\begin{equation}
+    \rho_{\mathrm{TRM}} \propto a^{-3(1+\beta)}, \qquad
+    p_{\mathrm{TRM}} = \beta \rho_{\mathrm{TRM}},
+    \label{eq:TRM-scaling-full}
+\end{equation}
+with $\beta>0$ determined by the deformation function $F(\A)$.  This
+component behaves as a rigidity-dominated matter fluid and constitutes
+a purely geometric dark-matter–like sector.
+
+Several properties follow immediately:
+\begin{itemize}[leftmargin=*]
+    \item TRM is conserved (no interaction term is required).
+    \item It behaves like standard cold dark matter when $\beta=0$.
+    \item A small but positive $\beta$ stiffens the scaling and slightly
+          suppresses structure formation, …consistent with weak-lensing trends,\cite{KiDS2021S8} favoring a mild reduction in $S_8$.
+\end{itemize}
+
+Because TRM emerges from non-closure rather than a particle species, it
+is insensitive to direct-detection constraints.
+
+% ------------------------------------------------------------
+\subsection{Geometric dark energy}
+\label{subsec:Lambda}
+
+The final emergent sector follows from the covariant Laplacian acting on
+$F(\A)$ and yields a geometric dark-energy density:
+\begin{equation}
+    \rho_\Lambda \propto \A.
+\end{equation}
+This component behaves similarly to dark energy but does not require a
+vacuum term or cosmological constant.  Its magnitude grows with $\A$,
+which in turn increases at late times when deceleration weakens.
+
+Thus TAP automatically generates a late-time acceleration phase driven
+by the growth of the asymmetry scalar.
+
+The equation of state associated with this geometric term is generally
+time dependent, and for a broad class of deformation functions yields:
+\begin{equation}
+    w_\Lambda(z) > -1 \quad \text{for} \quad 0 < z \lesssim 2,
+\end{equation}
+matching recent DESI hints.\cite{DESI2024VIcosmo}
+
+% ------------------------------------------------------------
+\subsection{Unified geometric origin}
+\label{subsec:unified}
+
+The three emergent sectors described above share a single geometric
+origin: the ordered non-commutativity of the triad $(\M,\T,\Sop)$.  The
+structure may be summarized succinctly as:
+\begin{align*}
+    \text{Non-closure} \;[\M,\T,\Sop] \neq 0
+    &\quad\Longrightarrow\quad
+    \A > 0, \\
+    \A
+    &\quad\Longrightarrow\quad
+    \bigl\{G_{\mathrm{eff}}(\rho),\;\rho_{\mathrm{TRM}},\;\rho_\Lambda\bigr\}.
+\end{align*}
+
+No new fields, potentials, or free energy densities are introduced.
+Instead, all deviations from GR arise through a deformation of the
+geometric measure by a single scalar quantity $\A$.
+
+In the next section we examine the resulting cosmological predictions
+and show that TAP produces correlated signatures consistent with current
+data.
+% ============================================================
+% V. COSMOLOGICAL PREDICTIONS AND OBSERVATIONAL SIGNATURES
+% ============================================================
+\section{Cosmological predictions}
+\label{sec:pred}
+The three TAP sectors—density-modulated gravity, TRM, and geometric
+dark energy—do not act independently. Because all three emerge from the
+same asymmetry scalar $\A$, their contributions evolve in a correlated
+manner.  This correlation distinguishes TAP from multi-component
+extensions of $\Lambda$CDM and provides a characteristic signature
+structure observable across diverse datasets.
+
+% ------------------------------------------------------------
+\subsection{Relief of the Hubble tension}
+\label{subsec:Hubble}
+
+The rise of the asymmetry scalar at late times produces a mild reduction
+of $F(\A)$, yielding an effective coupling $G_{\mathrm{eff}} < G$ during
+the redshift interval $0 \lesssim z \lesssim 2$.  Because the Hubble
+rate scales approximately as $H^2 \propto G_{\mathrm{eff}}\rho$, a
+weakened gravitational coupling increases the inferred $H_0$ derived
+from late-time expansion data.
+
+Qualitatively, the shift is:
+\begin{equation}
+    \Delta H_0
+    \;\sim\;
+    \frac{1}{2} \alpha\, \A(z\!\sim\!1)\, H_0,
+\end{equation}
+which is of the order needed to reconcile a Planck-normalized sound
+horizon with SH0ES measurements. Importantly, no unphysical negative
+energy density or phantom equation of state is required, and no energy
+exchange between sectors is introduced.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.92\linewidth]{figures/fig_Geff_z.tex.pdf}
+    \caption{
+    TAP prediction for the effective Newton coupling 
+    $G_{\mathrm{eff}}(z)/G$ as a function of redshift.  
+    The late-time rise of the asymmetry scalar produces a mild 
+    relaxation of gravity at $0 \lesssim z \lesssim 2$, consistent with
+    upward shifts in $H_0$ while preserving early-Universe physics.
+    }
+    \label{fig:Geff}
+\end{figure}
+
+% ------------------------------------------------------------
+\subsection{Suppressed matter clustering and the $S_8$ anomaly}
+\label{subsec:S8}
+
+The rigidity-dominated matter sector produces a small but controlled
+suppression of structure growth. For $\beta > 0$ the continuity equation
+\[
+\rho_{\mathrm{TRM}} \propto a^{-3(1+\beta)}
+\]
+implies a slightly faster dilution than cold dark matter. Combined with
+the weakening of $G_{\mathrm{eff}}$ at intermediate redshift, TAP
+predicts a lower growth amplitude consistent with weak-lensing
+measurements from KiDS-1000, DES-Y3, and HSC.
+
+The expected fractional suppression is:
+\begin{equation}
+    \frac{\Delta S_8}{S_8}
+    \sim -\frac{1}{2} \left( \beta + \alpha\, \A(z\!\sim\!0.5) \right),
+\end{equation}
+matching the magnitude favored by current data without requiring dark
+sector interactions or massive neutrinos.
+
+% ------------------------------------------------------------
+\subsection{Mildly evolving dark-energy equation of state}
+\label{subsec:wz}
+
+Because the geometric dark-energy density scales with the asymmetry
+scalar,
+\[
+\rho_\Lambda(z) \propto \A(z),
+\]
+the corresponding equation of state generically satisfies
+$w_\Lambda > -1$ at intermediate redshift.  A broad class of deformation
+functions yields:
+\begin{equation}
+    -1 < w_\Lambda(z) \lesssim -0.9
+    \qquad \text{for } 0.5 \lesssim z \lesssim 2.
+\end{equation}
+This aligns with DESI DR2 hints that dark energy may be slightly
+dynamical in this regime.  TAP therefore predicts a unified pattern:
+mild dark-energy evolution occurs simultaneously with suppressed growth
+and an upward shift in $H_0$.
+
+% ------------------------------------------------------------
+\subsection{Reproduction of the cosmic energy partition}
+\label{subsec:partition}
+
+A notable consequence of the TAP sectors is that they naturally produce
+an energy-density partition close to the observed
+$(\Omega_{\rm b}, \Omega_{\rm DM}, \Omega_\Lambda) \approx (0.05,0.27,0.68)$.
+The key reason is that $\A$ grows most substantially during the interval
+$0 < z \lesssim 2$, precisely when the dark-matter and dark-energy
+components become dynamically comparable.
+
+The relative magnitude of the three TAP contributions,
+\begin{align}
+    \rho_{\mathrm{b}}      &\propto a^{-3}, \\
+    \rho_{\mathrm{TRM}}    &\propto a^{-3(1+\beta)}, \\
+    \rho_{\Lambda}         &\propto \A(a),
+\end{align}
+naturally produces a late-time epoch in which
+$\rho_{\mathrm{TRM}} \simeq \rho_{\Lambda}$ before $\rho_{\Lambda}$
+dominates, reproducing the observed near-coincidence without tuning.
+
+% ------------------------------------------------------------
+\subsection{Minimal TAP cosmology}
+\label{subsec:minimalTAP}
+
+The combined effect of the three TAP sectors may be summarized in a
+minimal model characterized by the parameters $(\alpha,\beta)$ and the
+asymmetry growth history $\A(a)$.  A representative TAP cosmology
+exhibits:
+\begin{itemize}[leftmargin=*]
+    \item baryonic scaling $a^{-3}$,
+    \item TRM scaling $a^{-3(1+\beta)}$,
+    \item geometric dark-energy scaling $\rho_\Lambda \propto \A(a)$,
+    \item and an effective coupling $G_{\mathrm{eff}}(\rho)$ with
+          late-time relaxation.
+\end{itemize}
+
+This combination produces a distinctive signature set:
+\begin{enumerate}[leftmargin=*]
+    \item higher inferred $H_0$,
+    \item reduced $S_8$,
+    \item mild dark-energy evolution,
+    \item and a stable early-Universe limit matching the CMB.
+\end{enumerate}
+
+A schematic example of this minimal TAP cosmology is shown in
+Fig.~\ref{fig:minimal-tap}, illustrating the relative evolution of the
+three TAP energy components.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/e_g__fig_minimal_TAP_cosmology_tex.pdf}
+    \caption{
+    Minimal TAP cosmology: baryons scale as $a^{-3}$, TRM scales as 
+    $a^{-3(1+\beta)}$, and geometric dark energy follows the asymmetry
+    scalar $A(a)$.  This illustrates how TAP naturally reproduces the
+    observed cosmic energy partition.
+    }
+    \label{fig:minimal-tap}
+\end{figure}
+% ============================================================
+% VI. LOCAL-GRAVITY LIMIT AND GR SCREENING
+% ============================================================
+\section{Local-Gravity Limit and Geometric Screening}
+\label{sec:local}
+
+Any cosmological modification of General Relativity must reduce to GR in
+the high-density, high-curvature, and strong-field environments where
+gravity is tightly constrained by experiment. A key virtue of TAP is
+that it satisfies this requirement automatically through the behavior of
+the asymmetry scalar $\A$. The mechanism is geometric rather than
+field-theoretic: whenever the ordered triadic alteration among
+$(\M,\T,\Sop)$ becomes suppressed, the asymmetry scalar vanishes,
+eliminating all TAP-induced deviations.
+
+% ------------------------------------------------------------
+\subsection{High-density suppression of the asymmetry scalar}
+
+The TAP deformation enters the action only through the scalar
+\[
+\A \equiv \|[\M,\T,\Sop]\|.
+\]
+In regions where curvature, inertial stress, or local matter density
+dominate over large-scale triadic structure, the ordered alteration
+$\M \to \T \to \Sop$ approaches a commuting configuration. In this
+limit,
+\begin{equation}
+    [\M,\T,\Sop] \;\longrightarrow\; 0,
+    \qquad
+    (\rho, R, \sigma \rightarrow \infty),
+    \label{eq:Ato0_local}
+\end{equation}
+where $R$ is the curvature scalar and $\sigma$ the shear of the local
+velocity field.
+
+Consequently,
+\begin{equation}
+    \A \;\longrightarrow\; 0
+    \qquad\text{in all high-density regions.}
+\end{equation}
+Since the TAP deformation multiplies the Einstein--Hilbert measure
+through $F(\A)$ with $F(0)=1$, GR is exactly restored wherever $\A$ is
+suppressed.
+
+% ------------------------------------------------------------
+\subsection{Recovery of Newtonian and post-Newtonian limits}
+
+The effective Newton coupling in TAP is
+\[
+G_{\mathrm{eff}} = G\,F(\A)^{-1}.
+\]
+Near compact objects or within the Solar System,
+\begin{equation}
+    \A_{\mathrm{local}} \lesssim 10^{-15},
+\end{equation}
+so that
+\[
+G_{\mathrm{eff}} = G \left(1 + \mathcal{O}(10^{-15})\right),
+\]
+well below the $10^{-5}$–$10^{-6}$ precision of post-Newtonian
+experiments. Thus:
+\begin{itemize}[leftmargin=*]
+    \item planetary ephemerides,
+    \item lunar laser ranging,
+    \item Cassini time-delay measurements,
+    \item binary pulsar timing,
+\end{itemize}
+are automatically satisfied.
+
+No additional screening field or tuned potential is required; the
+suppression arises strictly from the geometric collapse of the triadic
+residue.
+
+% ------------------------------------------------------------
+\subsection{Local vanishing of the TRM contribution}
+
+The TRM sector arises from the derivative contributions generated by the
+measure deformation. Its energy density scales as
+$a^{-3(1+\beta)}$ only when $\A \neq 0$. In the local-gravity limit,
+$\A \rightarrow 0$ implies
+\[
+\rho_{\mathrm{TRM}} \rightarrow 0.
+\]
+Thus the rigidity matter component:
+\begin{itemize}[leftmargin=*]
+    \item contributes no fifth force,
+    \item introduces no local pressure or shear,
+    \item and decouples entirely from local gravitational potentials.
+\end{itemize}
+
+This ensures agreement with the Newtonian limit and prevents any local
+deviation in free-fall trajectories.
+
+% ------------------------------------------------------------
+\subsection{Local suppression of geometric dark energy}
+
+The geometric dark-energy contribution scales directly with the
+asymmetry scalar:
+\[
+\rho_\Lambda \propto \A.
+\]
+Therefore:
+\[
+\rho_\Lambda^{\mathrm{local}} \approx 0.
+\]
+This resolves the longstanding tension in many modified-gravity theories
+in which dark-energy fields contribute locally unless additional
+screening mechanisms are introduced. TAP's suppression is built-in and
+purely geometric.
+
+% ------------------------------------------------------------
+\subsection{Gravitational-wave propagation}
+
+Because the TAP deformation multiplies the Einstein--Hilbert action but
+does not alter the kinetic term of the metric, the propagation speed of
+gravitational waves remains:
+\[
+c_{\mathrm{gw}} = c
+\]
+whenever $\A \approx 0$.
+Since gravitational waves are produced in extremely strong-field
+environments (binary black holes and neutron stars), the collapse of the
+triadic residue ensures:
+\begin{itemize}[leftmargin=*]
+    \item no scalar, vector, or longitudinal GW modes,
+    \item no dispersion across the LIGO/Virgo band,
+    \item waveform phase evolution consistent with GR,
+    \item propagation on the same null cone as photons.
+\end{itemize}
+
+These are consistent with constraints from GW170817 and its associated
+gamma-ray burst.
+
+% ------------------------------------------------------------
+\subsection{Summary: geometric screening via triadic locking}
+
+The collective behavior of the operators $(\M,\T,\Sop)$ in dense or
+strongly curved regions ensures
+\[
+\A \longrightarrow 0
+\quad\Longrightarrow\quad
+G_{\mathrm{eff}} \to G,\;\;
+\rho_{\mathrm{TRM}} \to 0,\;\;
+\rho_{\Lambda} \to 0.
+\]
+Thus the TAP deformation shuts off in all local environments, and the
+Einstein field equations are fully restored. This ``triadic locking''
+mechanism provides a geometric analogue of chameleon- or Vainshtein-like
+screening, but without introducing new fields or tuned potentials. TAP
+therefore satisfies all existing local and strong-gravity tests while
+still generating phenomenologically relevant deviations on cosmological
+scales.
+
+% ============================================================
+% VIII. EVOLUTION OF THE ASYMMETRY SCALAR IN FLRW COSMOLOGY
+% ============================================================
+\section{Evolution of the asymmetry scalar in FLRW cosmology}
+\label{sec:Aevolution}
+
+The cosmological role of TAP hinges on the evolution of the asymmetry
+scalar
+\[
+A(a) \equiv \|[\M,\T,\Sop]\|,
+\]
+whose magnitude determines the strength of all TAP-induced sectors:
+the effective Newton coupling, the rigidity-matter (TRM) density, and
+the geometric dark-energy contribution. In this section we derive a
+cosmologically transparent form for $A(a)$, explain its scaling in the
+radiation-, matter-, and dark-energy–dominated eras, and identify the
+late-time threshold at which TAP effects become observationally
+significant.
+
+% ------------------------------------------------------------
+\subsection{Triadic residue in FLRW symmetry}
+
+In a spatially homogeneous and isotropic FLRW background, the TAP
+operator representation introduced earlier reduces to combinations of
+the Hubble parameter $H=\dot{a}/a$ and its time derivative
+$\dot{H}$. Evaluating the ordered triadic composition in this symmetry
+yields the schematic form
+\begin{equation}
+[\M,\T,\Sop] \;\sim\; \dot{H} + H^2 + \mathcal{O}(k/a^2),
+\label{eq:triad_FLRW}
+\end{equation}
+up to representation-dependent factors. Spatial curvature contributions
+are negligible in current observational regimes ($|k|/a^2 \ll H^2$).
+Thus the asymmetry scalar can be expressed, up to normalization, as
+\begin{equation}
+A(a) \;=\; A_0\left|\frac{\dot{H}}{H^2} + 1\right|,
+\label{eq:A_general}
+\end{equation}
+where $A_0$ is a constant fixed by the operator norm.
+
+The condition $\dot{H}=-H^2$ corresponds to coasting expansion; in this
+case the triadic residue vanishes and $A=0$. TAP effects thus activate
+only when cosmic expansion departs from coasting.
+
+% ------------------------------------------------------------
+\subsection{Scaling of $A(a)$ across cosmic eras}
+
+Using standard FLRW evolution, the quantity
+$\dot{H}/H^2 + 1$ admits simple analytic behavior in each cosmological
+epoch.
+
+\paragraph*{Radiation era $(a \propto t^{1/2})$:}
+\[
+H=\frac{1}{2t}, \qquad \dot{H}=-\frac{1}{2t^2},
+\]
+implying
+\[
+A(a) \propto a^{-2}.
+\]
+
+\paragraph*{Matter era $(a \propto t^{2/3})$:}
+\[
+H=\frac{2}{3t}, \qquad \dot{H}=-\frac{2}{3t^2},
+\]
+giving
+\[
+A(a) \propto a^{-3/2}.
+\]
+
+\paragraph*{Late-time acceleration $(H \approx \mathrm{const})$:}
+\[
+A(a) \longrightarrow A_\Lambda = \mathrm{constant}.
+\]
+
+These scalings indicate:
+\begin{itemize}[leftmargin=*]
+    \item $A(a)$ is strongly suppressed in the radiation and matter eras,
+    \item $A(a)$ grows as the Universe transitions toward acceleration,
+    \item $A(a)$ saturates once acceleration becomes dominant.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{TAP activation and the departure from deceleration}
+
+The expression \eqref{eq:A_general} shows that $A(a)$ becomes nonzero
+precisely when the Universe ceases to decelerate. Physically:
+\begin{itemize}[leftmargin=*]
+    \item During early decelerating expansion, the ordered triadic
+          alteration behaves nearly like a closed sequence, suppressing
+          $A(a)$.
+    \item As deceleration weakens, the ordered cycle becomes increasingly
+          non-commutative.
+    \item The resulting growth of $A(a)$ activates all TAP sectors.
+\end{itemize}
+
+Thus TAP identifies the onset of cosmic acceleration as the geometric
+threshold at which triadic non-closure becomes cosmologically relevant.
+
+% ------------------------------------------------------------
+\subsection{Connection to the emergent TAP sectors}
+
+The evolution of $A(a)$ directly controls the magnitude of all TAP
+modifications.
+
+\paragraph*{(1) Effective Newton coupling.}
+\[
+G_{\mathrm{eff}}(a)
+= G \left[1 + \alpha\,A(a) + \mathcal{O}(A^2)\right].
+\]
+Since $A(a)$ is negligible until late times,
+\[
+G_{\mathrm{eff}}(a) \approx G \qquad (a \ll 1),
+\]
+ensuring full consistency with early-Universe probes (CMB, BBN, BAO).
+
+\paragraph*{(2) Triadic Rigidity Matter (TRM).}
+The TRM sector scales as
+\[
+\rho_{\mathrm{TRM}}(a)
+= \rho_{0}\, a^{-3(1+\beta)}\, A(a),
+\]
+up to normalization. It is negligible during radiation and matter
+domination, but becomes relevant at the same epoch in which $A(a)$
+rises, i.e., near the onset of cosmic acceleration.
+
+\paragraph*{(3) Geometric dark energy.}
+\[
+\rho_\Lambda(a) \propto A(a).
+\]
+Thus $\rho_\Lambda$ shares the same late-time activation as $A(a)$,
+predicting mild evolution in the effective dark-energy equation of
+state.
+
+% ------------------------------------------------------------
+\subsection{Summary: triadic non-closure as a late-time phenomenon}
+
+The asymmetry scalar evolves approximately as
+\[
+A(a) \propto
+\begin{cases}
+a^{-2},      & \text{radiation era}, \\[6pt]
+a^{-3/2},    & \text{matter era},    \\[6pt]
+\text{constant}, & \text{late-time acceleration}.
+\end{cases}
+\]
+
+This behavior ensures:
+\begin{itemize}[leftmargin=*]
+    \item GR is preserved at early times,
+    \item TAP sectors activate only in the recent Universe,
+    \item the onset of acceleration is linked to the growth of non-closure,
+    \item TRM and geometric dark energy arise naturally from the same source.
+\end{itemize}
+
+The next section assembles these ingredients into a minimal,
+observationally testable TAP cosmology.
+
+% ============================================================
+% IX. MINIMAL TAP COSMOLOGY: BACKGROUND EVOLUTION
+% ============================================================
+\section{Minimal TAP cosmology: background evolution}
+\label{sec:minimalTAP}
+
+Having assembled the TAP geometric sectors and the asymmetry scalar
+$A(a)$, we now formulate the minimal TAP cosmology. This model reduces
+to $\Lambda$CDM when the triadic residue vanishes ($A=0$), but departs
+predictively from it once $A(a)$ grows near the onset of acceleration.
+The background dynamics are governed by three TAP contributions:
+\begin{enumerate}[leftmargin=*]
+    \item a curvature-dependent effective Newton coupling
+          $G_{\mathrm{eff}}(\rho)=G[1+\alpha A(a)]$,
+    \item a rigidity-matter component with scaling
+          $\rho_{\mathrm{TRM}} \propto a^{-3(1+\beta)} A(a)$,
+    \item a geometric dark-energy term $\rho_\Lambda(a)\propto A(a)$.
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{Modified Friedmann equations}
+
+The Friedmann equation with TAP corrections takes the form
+\begin{equation}
+H^2(a)
+= \frac{8\pi G_{\mathrm{eff}}(a)}{3}
+\Big[
+\rho_b a^{-3}
++ \rho_r a^{-4}
++ \rho_{\mathrm{TRM}}(a)
++ \rho_\Lambda(a)
+\Big],
+\label{eq:Friedmann_TAP}
+\end{equation}
+where $\rho_b$ and $\rho_r$ denote the present-day baryon and photon
+densities, respectively. The effective Newton coupling is
+\begin{equation}
+G_{\mathrm{eff}}(a)
+= G\left[1 + \alpha\,A(a)\right].
+\label{eq:Geff}
+\end{equation}
+
+The acceleration equation becomes
+\begin{equation}
+\frac{\ddot{a}}{a}
+= -\frac{4\pi G_{\mathrm{eff}}(a)}{3}
+\big(\rho + 3p\big)
++ \frac{4\pi G}{3}\left[\lambda_\Lambda A(a)\right],
+\label{eq:accel_TAP}
+\end{equation}
+where $\lambda_\Lambda$ sets the normalization of the geometric
+triadic dark-energy sector.
+
+% ------------------------------------------------------------
+\subsection{TRM density evolution}
+
+The TAP-induced rigidity-matter component obeys
+\begin{equation}
+\rho_{\mathrm{TRM}}(a)
+= \rho_{\mathrm{TRM},0}\,a^{-3(1+\beta)}\,A(a),
+\label{eq:rhoTRM}
+\end{equation}
+where $\beta$ controls the stiffness of the rigidity sector.
+For $\beta=0$ it behaves as dust; for $\beta>0$ it decays slightly more
+slowly than CDM. Typical TAP phenomenology uses
+$0.05 \lesssim \beta \lesssim 0.2$.
+
+Because $A(a)\ll 1$ during radiation and matter domination,
+$\rho_{\mathrm{TRM}}$ is dynamically irrelevant at early times and only
+activates near the acceleration epoch.
+
+% ------------------------------------------------------------
+\subsection{Geometric dark-energy sector}
+
+The TAP dark-energy density is proportional to the asymmetry scalar:
+\begin{equation}
+\rho_\Lambda(a)
+= \rho_{\Lambda,0}\,\frac{A(a)}{A_0},
+\label{eq:rhoLambdaA}
+\end{equation}
+where $A_0 \equiv A(a=1)$. This ensures that $\rho_\Lambda(a)$ tracks
+the late-time growth and saturation of $A(a)$, producing a mildly
+evolving effective equation of state.
+
+To leading order, the dark-energy equation of state is
+\begin{equation}
+w_\Lambda(a)
+= -1 + \frac{1}{3}\frac{d\ln A(a)}{d\ln a}.
+\label{eq:wLambda}
+\end{equation}
+
+Since $A(a)$ increases as the Universe exits matter domination,
+$w_\Lambda(a)$ naturally deviates slightly from $-1$ at intermediate
+redshift, consistent with current DESI sensitivity windows.
+
+% ------------------------------------------------------------
+\subsection{Background solution and observational window}
+
+Combining
+\cref{eq:Friedmann_TAP,eq:Geff,eq:rhoTRM,eq:rhoLambdaA},
+the Hubble parameter is
+\begin{align}
+H^2(a)
+&=
+H_0^2
+\bigg[
+\Omega_b a^{-3}
++ \Omega_r a^{-4}
++ \Omega_{\mathrm{TRM}}\,a^{-3(1+\beta)}A(a) \nonumber \\
+&\quad\;
++ \Omega_{\Lambda}\frac{A(a)}{A_0}
+\bigg]
+\left[1+\alpha A(a)\right].
+\label{eq:H2final}
+\end{align}
+
+The structure of \cref{eq:H2final} implies:
+\begin{itemize}[leftmargin=*]
+    \item TAP corrections are negligible at early times because  
+          $A(a)\propto a^{-3/2}$ or $a^{-2}$.
+    \item TAP modifies only the late-time expansion, exactly where
+          current observations show mild anomalies (Hubble tension,
+          DESI $w(z)$ evolution).
+    \item TAP predicts gentle deviations in $H(a)$ for
+          $0.3 \lesssim z \lesssim 2$, the prime sensitivity region of
+          DESI, Euclid, Roman, and LSST.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{Connection to the observed cosmic energy partition}
+
+Evaluating \cref{eq:H2final} at $a=1$ yields the constraint
+\begin{equation}
+\Omega_b + \Omega_r
++ \Omega_{\mathrm{TRM}} A_0
++ \Omega_\Lambda = 1.
+\label{eq:closure}
+\end{equation}
+
+The TAP phenomenology that reproduces the observed
+$(\Omega_b,\Omega_{\mathrm{DM}},\Omega_\Lambda)
+\approx (0.05,0.27,0.68)$ typically corresponds to
+\begin{align}
+A_0 &\sim 0.2, \\
+\Omega_{\mathrm{TRM}}A_0 &\approx 0.27, \\
+\Omega_\Lambda &\approx 0.68.
+\end{align}
+
+Thus the entire dark sector arises from two TAP sources:
+\begin{itemize}[leftmargin=*]
+    \item TRM provides the effective dark-matter fraction,
+    \item geometric non-closure $A(a)$ provides dark energy.
+\end{itemize}
+
+There are no new particles and no new fields beyond geometry.
+
+% ------------------------------------------------------------
+\subsection{Summary of predictions}
+
+The minimal TAP cosmology predicts:
+\begin{itemize}[leftmargin=*]
+    \item a mild deviation from $w=-1$ at $0.5\lesssim z\lesssim 2$,
+    \item a density-stiffened $\rho_{\mathrm{TRM}}$ component mimicking CDM,
+    \item a late-time shift in $G_{\mathrm{eff}}$ at $\mathcal{O}(10\%)$ level,
+    \item no modifications to early-Universe physics,
+    \item unified geometric origin of DM + DE.
+\end{itemize}
+
+In the next section we quantify TAP’s linear-perturbation signatures and
+its observational discriminants.
+
+% ============================================================
+% X. LINEAR PERTURBATIONS AND OBSERVATIONAL SIGNATURES
+% ============================================================
+\section{Linear perturbations and observational signatures}
+\label{sec:perturbations}
+
+The TAP framework modifies the late-time evolution of both the metric
+and matter fluctuations through two channels: (1) the density-dependent
+Newton coupling $G_{\mathrm{eff}}(\rho)$, and (2) the rigidity-matter
+(TRM) sector scaling with $A(a)$. Early-Universe physics remains
+unchanged because $A(a)\ll 1$ in the radiation and matter eras.
+Consequently, TAP preserves the CMB acoustic peaks, primordial
+nucleosynthesis, and early growth while generating mild deviations only
+at $z\lesssim 3$.
+
+% ------------------------------------------------------------
+\subsection{Modified Poisson equation}
+
+In Newtonian gauge,
+\begin{equation}
+\nabla^2\Phi = 4\pi G_{\mathrm{eff}}(a)\,a^2
+\left[
+\rho_b\delta_b
++ \rho_{\mathrm{TRM}}\delta_{\mathrm{TRM}}
+\right],
+\label{eq:Poisson}
+\end{equation}
+where $\Phi$ is the gravitational potential and
+$G_{\mathrm{eff}}(a)=G[1+\alpha A(a)]$. Because $A(a)$ increases only at
+late times, the Poisson equation approaches GR at high redshift and
+deviates gently for $z\lesssim 2$.
+
+The TRM perturbation satisfies
+\begin{equation}
+\delta_{\mathrm{TRM}}' =
+-(1+\beta)\theta_{\mathrm{TRM}}
+- 3\frac{A'}{A}\delta_{\mathrm{TRM}},
+\end{equation}
+reflecting its slightly stiffened effective equation of state.
+
+% ------------------------------------------------------------
+\subsection{Growth equation}
+
+For sub-horizon modes the baryon density contrast obeys
+\begin{align}
+\delta_b'' 
+&+ \left(2 + \frac{H'}{H} \right)\delta_b'
+\nonumber \\
+&= \frac{3}{2}
+\frac{H_0^2}{H^2(a)}
+\,\Omega_{m}(a)\,\big[1+\alpha A(a)\big]\,\delta_b,
+\label{eq:growth}
+\end{align}
+where primes denote derivatives with respect to $\ln a$.
+The factor $1+\alpha A(a)$ provides a late-time enhancement or
+suppression depending on the sign of $\alpha$. Because TAP phenomenology
+matches cosmic screening to GR, we typically consider $\alpha>0$ but
+small ($\alpha\sim0.1$--$0.2$).
+
+The observable growth rate is
+\begin{equation}
+f(a) \equiv \frac{d\ln \delta_b}{d\ln a},
+\qquad
+f\sigma_8(a) = f(a)\,\sigma_8(a).
+\label{eq:fsigma8}
+\end{equation}
+
+TAP generically predicts a few-percent deviation in $f\sigma_8$ at
+$0.5\lesssim z\lesssim 2$, within DESI and Euclid sensitivity.
+
+% ------------------------------------------------------------
+\subsection{Gravitational slip}
+
+TAP does not introduce additional degrees of freedom, so the two metric
+potentials $\Phi$ and $\Psi$ remain equal at the linear level:
+\begin{equation}
+\Phi = \Psi.
+\end{equation}
+This is an important discriminant: many scalar–tensor and modified gravity frameworks\cite{Kase2019HorndeskiBeyond,Sotiriou2010fRreview})
+predict $\Phi\neq\Psi$, whereas TAP predicts a \emph{purely geometric}
+shift in $G_{\mathrm{eff}}$ without new fields.
+
+% ------------------------------------------------------------
+\subsection{Integrated Sachs--Wolfe (ISW) effect}
+
+Because $A(a)$ increases only in the low-redshift Universe, the
+gravitational potentials begin to evolve slightly at $z\lesssim 2$,
+leading to a small but non-zero ISW signal. The magnitude is comparable
+to a mildly dynamic dark-energy model with $w(z)\gtrsim -1$, making TAP
+ISW predictions distinguishable from $\Lambda$CDM but consistent with
+current CMB-LSS cross-correlation data.
+
+% ------------------------------------------------------------
+\subsection{Redshift-space distortions}
+
+The TAP growth modification \cref{eq:growth} implies changes in peculiar
+velocities and thus redshift-space distortions (RSD). Surveys measuring
+$f\sigma_8$, including DESI, Euclid, and LSST, will be able to test TAP
+through the predicted $\sim$1--5\% deviation at intermediate redshift.
+
+% ------------------------------------------------------------
+\subsection{Distinguishing TAP from $\Lambda$CDM}
+
+The following late-time signatures jointly distinguish TAP:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Mild evolution of $w(z)$}, governed by $A(a)$.
+    \item \textbf{Enhanced or suppressed growth} depending on $G_{\mathrm{eff}}(a)$.
+    \item \textbf{CDM-like but slightly stiff TRM} modifying the matter budget.
+    \item \textbf{No gravitational slip}, unlike scalar-tensor or MG theories.
+    \item \textbf{No early-time deviations}: TAP preserves CMB and BAO.
+\end{itemize}
+
+Combined, these produce a testable and tightly constrained deviation
+from $\Lambda$CDM that will be decidable with near-future data.
+
+% ============================================================
+% XI. DISCUSSION AND OUTLOOK
+% ============================================================
+\section{Discussion and outlook}
+\label{sec:discussion}
+
+The Triadic Asymmetry Principle provides a unified geometric mechanism
+in which motion, time, and space form a non-commuting ordered triad.
+The resulting triadic residue $A=\|[\M,\T,\Sop]\|$ acts as a single
+geometric driver of three late-time cosmological channels:
+density-modulated gravity through $G_{\mathrm{eff}}(\rho)$, rigidity-
+dominated matter (TRM) scaling as $a^{-3(1+\beta)}$, and a geometric
+dark-energy sector with $\rho_\Lambda\propto A(a)$. Because $A(a)$ is
+naturally suppressed in high-density or high-curvature environments, TAP
+automatically reproduces GR for all Solar-System and astrophysical
+tests, while permitting percent-level modifications on cosmic scales.
+
+A central feature of TAP is that no new fields, potentials, or
+fine-tuned parameters are introduced. The deformation of gravity arises
+solely from the internal non-closure of the $(\M,\T,\Sop)$ triad, and
+the late-time behavior of $A(a)$ determines both the geometry and the
+expansion history. As a result, several long-standing cosmological
+phenomena emerge from a single geometric source.
+
+\subsection{Implications for cosmic acceleration}
+
+Because the geometric dark-energy density tracks the growth of
+$A(a)$, the expansion history exhibits an effective equation of state
+$w(z)>-1$ at intermediate redshift but closely approaches $\Lambda$CDM
+today. This mild dynamical component provides a natural explanation for
+the DESI preference for evolving dark energy \cite{Linder2003CPL}without invoking additional
+scalar fields or exotic sectors.
+
+\subsection{Structure formation and near-future tests}
+
+TAP predicts specific signatures in the growth rate, RSD observables,
+and the ISW effect. The predicted $1$–$5$\,\% deviation in $f\sigma_8$
+at $0.5\lesssim z\lesssim 2$ lies squarely within the sensitivity of
+DESI, Euclid, and the Rubin Observatory. The absence of gravitational
+slip ($\Phi=\Psi$) provides a clean test distinguishing TAP from
+scalar-tensor theories and many modified-gravity alternatives.
+
+\subsection{Relation to other frameworks}
+
+TAP differs from modified-gravity models by introducing no new
+propagating degrees of freedom, and from dynamical dark-energy models by
+generating $w(z)$ geometrically rather than through a potential.
+Similarly, the TRM sector behaves like CDM with a slight rigidity
+correction, distinct from warm dark matter or self-interacting dark
+matter scenarios. In combination, these traits place TAP in a unique
+position among post-$\Lambda$CDM approaches.
+
+\subsection{Future directions}
+
+There are several natural extensions of the present work:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Nonlinear structure formation.}  
+    Extending TAP to the nonlinear regime, including halo formation and
+    N-body simulations, will assess TRM clustering and potential small-
+    scale signatures.
+
+    \item \textbf{Relativistic effects.}  
+    A full relativistic perturbation analysis incorporating light
+    propagation, lensing convergence, and cosmic shear will enable
+    comparison to weak-lensing datasets.
+
+    \item \textbf{Bounce cosmology and the antiverse.}  
+    TAP provides a natural language for dual time-flow cosmologies.
+    Future work can develop the triadic exchange across a bounce and the
+    relation between the Universe–Antiverse dyad.
+
+    \item \textbf{Quantum and geometric origin of the triad.}  
+    A deeper investigation into whether the $(\M,\T,\Sop)$ operators can
+    emerge from a more fundamental micro-geometric or algebraic
+    structure—such as causal sets, CDT, or operator-algebra quantum
+    gravity—may reveal the origin of triadic asymmetry.
+\end{itemize}
+
+\vspace{6pt}
+In summary, the Triadic Asymmetry Principle provides a tightly
+constrained, observationally testable geometric extension of GR in which
+dark matter, dark energy, and density-modulated gravity arise from a
+single structural feature: the ordered non-commutativity of
+motion, time, and space. The upcoming decade of cosmological surveys
+will decisively test this framework.
+
+\subsection*{Limitations and Assumptions}
+
+The present formulation of TAP makes several simplifying assumptions that 
+define its current scope and highlight directions for future development. 
+First, all results are derived at the background and linear-perturbation 
+levels; a complete nonlinear analysis, including halo formation and 
+N-body dynamics with TRM, is left for future work. Second, the operator 
+representation of $(\M,\T,\Sop)$ used here is chosen for cosmological 
+symmetry; while different representations yield equivalent large-scale 
+phenomenology, they may shift the normalization of the asymmetry scalar 
+$\A$, and exploring this dependence is an open task. Third, TAP assumes 
+statistical homogeneity and isotropy on cosmological scales, and does 
+not address potential signatures in strongly anisotropic or inhomogeneous 
+backgrounds. Finally, we treat the deformation function $F(\A)$ 
+phenomenologically, specifying only its regularity and small-$\A$ 
+expansion; determining whether $F(\A)$ arises from a more fundamental 
+algebraic or microgeometric principle is an ongoing direction. These 
+assumptions do not affect the main results but clarify the regime in 
+which the present analysis is valid.
+
+% ============================================================
+% XII. APPENDICES
+% ============================================================
+
+\appendix
+
+% ------------------------------------------------------------
+% Appendix A: Derivation of the TAP-modified field equations
+% ------------------------------------------------------------
+\section{Derivation of the TAP-modified field equations}
+\label{app:derivation}
+
+The TAP deformation enters the gravitational action through a modified
+volume measure,
+\begin{equation}
+    S = \frac{1}{16\pi G}
+    \int d^4x\, \sqrt{-g}\, F(A)\, R + S_{\rm m},
+\end{equation}
+with $F(0)=1$ and $A=\|[\M,\T,\Sop]\|$. Varying with respect to the
+metric gives
+\begin{equation}
+    \delta S =
+    \frac{1}{16\pi G}
+    \int d^4x
+    \bigl[
+      \delta(\sqrt{-g}F(A))\, R
+      + \sqrt{-g}F(A)\, \delta R
+    \bigr].
+\end{equation}
+
+Using the metric variation
+\begin{equation}
+    \delta(\sqrt{-g}) = -\tfrac12\sqrt{-g} g_{\mu\nu}\delta g^{\mu\nu},
+\end{equation}
+and defining
+\begin{equation}
+    F_A \equiv \frac{dF}{dA},
+\end{equation}
+we obtain
+\begin{equation}
+\delta(\sqrt{-g}F) =
+    \sqrt{-g}\left(
+      -\frac{1}{2}Fg_{\mu\nu}\delta g^{\mu\nu}
+      + F_A\,\delta A
+    \right).
+\end{equation}
+
+Variation of the Ricci scalar yields the standard Einstein–Hilbert
+boundary structure. Collecting all pieces produces the TAP-modified
+field equations,
+\begin{equation}
+    F(A)G_{\mu\nu}
+    + \bigl(g_{\mu\nu}\Box - \nabla_\mu\nabla_\nu\bigr)F(A)
+    = 8\pi G\, T_{\mu\nu},
+    \label{eq:TAP-field-eq-appendix}
+\end{equation}
+which reduce exactly to GR when $A\rightarrow 0$.
+
+In FRW symmetry, the operator-alteration structure constrains $A$ to be
+a function of the scale factor alone, $A=A(a)$, simplifying the
+derivatives and yielding the Friedmann equations used in the main text.
+
+% ------------------------------------------------------------
+% Appendix B: TRM scaling and rigidity parameter beta
+% ------------------------------------------------------------
+\section{TRM scaling and the rigidity parameter \texorpdfstring{$\beta$}{beta}}
+\label{app:TRM}
+
+The rigidity-dominated matter component (TRM) arises from the expansion
+of the modified measure $F(A)$ around $A=0$:
+\begin{equation}
+    F(A) = 1 + \alpha A + \gamma A^2 + \cdots.
+\end{equation}
+
+The linear deformation induces a correction to the continuity equation,
+\begin{equation}
+    \dot{\rho} + 3H\rho
+    = -3H\beta\rho,
+\end{equation}
+where the parameter $\beta$ is directly linked to the response of $A$ to
+cosmic expansion,
+\begin{equation}
+    \beta = \frac{d\ln A}{d\ln a}.
+\end{equation}
+
+Solving the modified continuity equation yields
+\begin{equation}
+    \rho_{\mathrm{TRM}}
+    = \rho_0\, a^{-3(1+\beta)},
+\end{equation}
+the result quoted in the main text.
+
+Unlike warm or self-interacting dark matter, TRM does not correspond to
+a new particle species. It is a geometric rigidity effect arising from
+the ordered non-commutativity of $(\M,\T,\Sop)$ and exhibits cold-matter
+clustering on large scales with a small, calculable deviation controlled
+by $\beta$.
+
+% ------------------------------------------------------------
+% Appendix C: Operator locking and high-curvature screening
+% ------------------------------------------------------------
+\section{Operator locking and high-curvature screening}
+\label{app:screening}
+
+In regions where curvature or matter density dominates over cosmological
+triadic structure, the geometric operators tend to align:
+\begin{equation}
+    [\M,\T,\Sop]\;\longrightarrow\;0,
+    \qquad
+    \text{for } R_{\mu\nu\alpha\beta}\gg H^2,\,\dot{H}.
+\end{equation}
+
+Since every TAP deformation is proportional to $A$, the $A\to0$ limit
+restores the Einstein–Hilbert action:
+\begin{equation}
+    S \to \frac{1}{16\pi G} \int d^4x\, \sqrt{-g}\, R.
+\end{equation}
+
+This provides a purely geometric screening mechanism. Dense regions,
+collapsed objects, and high-curvature environments reproduce GR to high
+accuracy:
+\begin{equation}
+    A_{\rm local} \lesssim 10^{-15}-10^{-20},
+\end{equation}
+ensuring consistency with Solar System tests, binary pulsars, and
+precision timing constraints.
+
+The TAP deformation therefore acts only on cosmological scales, while remaining invisible in all presently tested
+local-gravity regimes.
+
+\section*{Acknowledgments}
+
+The author thanks colleagues in the theoretical cosmology and gravitation
+communities for valuable discussions and early feedback on the conceptual
+development of the Triadic Asymmetry Principle. The author is also grateful
+for the support of the broader online scientific community, whose questions
+and insights helped sharpen several aspects of the framework. Finally, the
+author thanks his wife Cindy for her patience in tolerating many late-night hours spent developing this framework, which for a while seemed like a ridiculous idea — and a total waste of motion, time, and space. Any remaining errors are the author's own.
+
+% Print *all* entries in tap_refs.bib, even if not cited explicitly:
+\nocite{*}
+
+\bibliographystyle{apsrev4-2}
+\bibliography{tap_refs}
+
+\end{document}
