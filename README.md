@@ -1,6 +1,36 @@
-# The-Triadic-Asymmetry-Principle-A-Geometric-Origin-of-the-Dark-Sector-And-Density-Modulated-Gravity
-The Triadic Asymmetry Principle (TAP) is a geometric framework in which Motion,  Time, and Space form an ordered non-commuting triad. The non-closure of the triad  is quantified by the asymmetry scalar  \\( A = \|[M, T, S]\| \\), which acts as a new geometric invariant.
+README
 
+# The Triadic Asymmetry Principle (TAP)
+### A Unified Geometric Origin of Dark Matter, Dark Energy, and Density-Modulated Gravity 
+**Author:** David C. Horn 
+**Version:** v1.0 
+**Zenodo DOI:** https://doi.org/10.5281/zenodo.17682108 
+
+---
+
+## Overview
+
+This repository contains the LaTeX source files for the preprint:
+
+*The Triadic Asymmetry Principle: 
+A Unified Geometric Origin of Dark Matter, Dark Energy, and Density-Modulated Gravity.*
+
+The Triadic Asymmetry Principle (TAP) is a geometric framework in which Motion, 
+Time, and Space form an ordered non-commuting triad. The non-closure of the triad 
+is quantified by the asymmetry scalar 
+\\( A = \|[M, T, S]\| \\), which acts as a new geometric invariant.
+
+A deformation of the gravitational action by \\( F(A) \\) generates three emergent 
+late-time cosmological sectors:
+
+1. A density-modulated effective Newton coupling \\( G_\mathrm{eff}(\rho) \\) 
+2. A rigidity-dominated matter component (TRM) 
+3. A geometric dark-energy sector proportional to the triadic asymmetry
+
+The framework is fully covariant, introduces no new fields, recovers General 
+Relativity in high-density regimes through geometric screening, and predicts 
+correlated signatures related to the Hubble tension, the \\( S_8 \\) anomaly, 
+and recent DESI indications of evolving \\( w(z) \\).
 
 Creative Commons Attribution 4.0 International Public License
 By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution 4.0 International Public License ("Public License").
